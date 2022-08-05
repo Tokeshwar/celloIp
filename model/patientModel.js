@@ -4,7 +4,7 @@ const ObjectId = mongoose.Schema.Types.ObjectId;
 const patientSchema = new mongoose.Schema({
     doctorId: {
         type: ObjectId,
-        ref: 'User'
+        ref: 'Doctor'
     },
     patientName: {
         type: String,

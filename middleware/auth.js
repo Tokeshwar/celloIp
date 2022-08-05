@@ -1,6 +1,4 @@
 const jwt = require('jsonwebtoken')
-const mongoose = require('mongoose')
-
 
 const authenticate = async function (req, res, next) {
     try {
@@ -8,26 +6,22 @@ const authenticate = async function (req, res, next) {
         const secretKey = "celloip"
 
         if (!token) {
-            return res.status(400).send({ status: false, message: "Please provide token" })
+            return res.status(400).send({ status: false, message: "Please provide token..!!" })
         }
 
         const decodedToken = jwt.verify(token, secretKey)
 
         if (!decodedToken) {
-            return res.status(401).send({ status: false, message: "authentication failed" })
+            return res.status(401).send({ status: false, message: "authentication failed..!!" })
         }
 
         req.decodedToken = decodedToken
-
         next()
 
     } catch (err) {
-
         res.status(500).send({ error: err.message })
     }
 }
-
-
 
 
 module.exports = {authenticate};
